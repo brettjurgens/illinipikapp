@@ -4,7 +4,11 @@ require 'haml'
 require 'sass'
 
 get '/' do
-  haml :list, :locals => {}
+  haml :home, :locals => {}
+end
+
+get '/pages/:name' do |name|
+  haml :page, :locals => {:page => name}
 end
 
 get '/css/:name.css' do
@@ -16,4 +20,8 @@ set :public_folder, 'views/static'
 
 get '/js/:name.js' do
   redirect 'js/:name.js'
+end
+
+get '/images/:name' do
+  redirect 'images/:name'
 end
