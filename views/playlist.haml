@@ -1,0 +1,38 @@
+%link(rel="stylesheet" type="text/css" href="/css/style.css")
+%script{:type=>"text/javascript", :src=>"//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"}
+%script{:type=>"text/javascript", :src=>"/js/script.js"}
+%table
+  %tr
+    %th
+      Title
+    %th
+      Artist
+    %th
+      Downloaded
+
+  - songs.each do |song|
+    %tr.song
+      %td
+        = song['title']
+      %td
+        = song['artist']
+      %td
+        - if (song['downloaded'] == 1)
+          %input{:type=>"checkbox", :checked=>"true", :id=>"song#{song['id']}"}
+          %label{:for=>"song#{song['id']}"}
+            true
+        - else
+          %input{:type=>"checkbox", :id=>"song#{song['id']}"}
+          %label{:for=>"song#{song['id']}"}
+            false
+  %tr
+    %form{:id=>"addsong", :method=>"post", :action=>"/add"}
+      %td
+        %input{:type=>"text", :name=>"title", :id=>"addTitle"}
+      %td
+        %input{:type=>"text", :name=>"artist", :id=>"addArtist"}
+        %input{:type=>"hidden", :name=>"playlist", :value=>"#{playlist}", :id=>"addPlaylist"}
+      %td
+        %input{:type=>"checkbox", :name=>"downloaded", :id=>"addDownloaded"}
+      %td
+        %input{:type=>"submit", :id=>"add"}

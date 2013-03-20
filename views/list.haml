@@ -1,0 +1,5 @@
+%table
+  - playlists.each do |playlist|
+    %tr
+      %a{:href=>"/playlist/#{playlist['id']}"}
+        = playlist['name']
