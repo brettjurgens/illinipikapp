@@ -8,6 +8,9 @@ Some things
     head.haml
       > Doctype, HEAD, header, flag image
 
+    foot.haml
+      > footer... copyright & social networking
+      
     page.haml
       > Sets up the page content (i.e. heading, <section>)
       > grabs the relevant content from pagename.haml
