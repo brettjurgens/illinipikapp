@@ -8,7 +8,11 @@ get '/' do
 end
 
 get '/pages/:name' do |name|
-  haml :page, :locals => {:page => name}
+  begin
+    haml :page, :locals => {:page => name}
+  rescue Errno::ENOENT
+    haml :error
+  end
 end
 
 get '/css/:name.css' do

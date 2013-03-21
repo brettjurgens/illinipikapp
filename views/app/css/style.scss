@@ -116,6 +116,24 @@ header {
   font-size: 16px;
   text-align: justify;
   text-justify: inter-word;
+  .heading {
+    font-weight: bold;
+    font-size:16px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .monospace {
+    font-family: monospace;
+    margin: 5px;
+  }
+  .ccdonate {
+    width: 330px;
+    margin: 20px auto 10px;
+    text-align: center;
+    .floatimg {
+      margin: 0 5px;
+    }
+  }
 }
 
 /* Footer */
