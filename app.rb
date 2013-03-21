@@ -4,7 +4,11 @@ require 'haml'
 require 'sass'
 
 get '/' do
-  haml :home, :locals => {}
+  begin
+    haml :page, :locals => {:page => "welcome"}
+  rescue Errno::ENOENT
+    haml :error, :locals => {:page => "welcome"}
+  end
 end
 
 get '/pages/:name' do |name|
