@@ -51,12 +51,25 @@ table {
 
 /* Our styles */
 
+/* Globals */
 body {
   margin: 10px auto;
   width: 960px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  color: #999;
+}
+.indentedlist {
+  margin: 5px;
+}
+.italic {
+  font-style: italic;
+}
 /* Header */
 
 header {
