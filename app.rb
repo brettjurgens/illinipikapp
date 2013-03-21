@@ -1,4 +1,4 @@
-# myapp.rb
+# app.rb
 require 'sinatra'
 require 'haml'
 require 'sass'
@@ -11,7 +11,7 @@ get '/pages/:name' do |name|
   begin
     haml :page, :locals => {:page => name}
   rescue Errno::ENOENT
-    haml :error
+    haml :error, :locals => {:page => name}
   end
 end
 

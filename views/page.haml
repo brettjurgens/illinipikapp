@@ -1,3 +1,7 @@
 = haml :head
-= haml :"#{page}"
+%section#content
+  %span.section-header
+    =page
+  .section-body
+    = haml :"#{page}"
 = haml :foot

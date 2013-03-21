@@ -16,3 +16,9 @@ tmp
 .yardoc
 _yardoc
 doc/
+
+# SASS
+.sass-cache/
+
+# Cache
+vendor/
