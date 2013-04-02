@@ -4,7 +4,7 @@
     %title Pi Kappa Phi - Upsilon Chapter
     %link{:rel => "shortcut icon", :type => "image/png", :href => "/images/favicon.png"}/
     %link{:href => "/css/style.css", :rel => "stylesheet", :type => "text/css"}/
-    %script{:type=>"text/javascript", :src=>"//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"}
+    %script{:type=>"text/javascript", :src=>"//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"}
     %script{:type=>"text/javascript", :src=>"/js/script.js"}
 
   %body
@@ -12,17 +12,17 @@
       #logo{:onclick => "javascript:window.location='/'"}
       %ul#headermenu
         %li
-          %a{:href => "/pages/about"} About
+          %a{:href => "/pages/about", :class=>"#{ page == 'about' ? 'active' : 'inactive' }"} About
         %li
-          %a{:href => "/pages/history"} History
+          %a{:href => "/pages/history", :class=>"#{ page == 'history' ? 'active' : 'inactive' }"} History
         %li
-          %a{:href => "/pages/alumni"} Alumni
+          %a{:href => "/pages/alumni", :class=>"#{ page == 'alumni' ? 'active' : 'inactive' }"} Alumni
         %li
-          %a{:href => "/pages/recruitment"} Recruitment
+          %a{:href => "/pages/recruitment", :class=>"#{ page == 'recruitment' ? 'active' : 'inactive' }"} Recruitment
         %li
-          %a{:href => "/pages/philanthropy"} Philanthropy
+          %a{:href => "/pages/philanthropy", :class=>"#{ page == 'philanthropy' ? 'active' : 'inactive' }"} Philanthropy
         %li
-          %a{:href => "/pages/contact"} Contact
+          %a{:href => "/pages/contact", :class=>"#{ page == 'contact' ? 'active' : 'inactive' }"} Contact
         %li
-          %a{:href => "/pages/donate"} Donate
+          %a{:href => "/pages/donate", :class=>"#{ page == 'donate' ? 'active' : 'inactive' }"} Donate
     %div#fb-root

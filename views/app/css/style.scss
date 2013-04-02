@@ -60,9 +60,9 @@ body {
 a {
   text-decoration: none;
   color: inherit;
-}
-a:hover {
-  color: #999;
+  &:hover {
+    color: #999;
+  }
 }
 .indentedlist {
   margin: 5px;
@@ -80,6 +80,7 @@ header {
     height: 75px;
     background-size: 240px 75px;
     float: left;
+    cursor: pointer;
   }
   #headermenu {
     color: #666;
@@ -88,75 +89,81 @@ header {
     list-style: none;
     float: right;
     margin-top: 30px;
-    a {
-      text-decoration: none;
-      color: #666;
-    }
     li {
       &:first-child {
         padding-left: 0 !important;
       }
       display: inline;
       padding-left: 20px;
-      a:hover {
-        color: #999;
+      a {
+        text-decoration: none;
+        color: #666;
+        &:hover {
+          color: #999;
+        }
+        &.active {
+          color: #999;
+        }
       }
     }
   }
 }
 
 /* Featured Image! */
-
-#welcome_featured {
+@mixin featured_base($name) {
   width: 960px;
   height: 250px;
-  background-image: url('/images/flags.png');
   margin-bottom: 10px;
+  background-image: url('/images/#{$name}.png');
+}
+#welcome_featured {
+  @include featured_base("flags")
 }
 
 /* Section shit */
-
-.section-header {
-  font-size: 20px;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #333;
-}
-
-.section-body {
-  margin-top: 5px;
-  color: #333;
-  font-size: 14px;
-  text-align: justify;
-  text-justify: inter-word;
-  .heading {
+section {
+  .section-header {
+    font-size: 20px;
     font-weight: bold;
-    font-size:16px;
     text-transform: uppercase;
-    margin-bottom: 2px;
+    color: #333;
   }
-  .monospace {
-    font-family: monospace;
-    margin: 5px;
-  }
-  .ccdonate {
-    width: 330px;
-    margin: 20px auto 10px;
-    text-align: center;
-    .floatimg {
-      margin: 0 5px;
-    }
-  }
-  .signature {
-    color: #666;
+
+  .section-body {
+    margin-top: 5px;
+    color: #333;
     font-size: 14px;
-  }
-  .tagline {
-    font-style: italic;
-    margin-bottom: 10px;
-    color: #666;
-    font-size: 18px;
-    text-align: center;
+    text-align: justify;
+    text-justify: inter-word;
+    .heading {
+      font-weight: bold;
+      font-size:16px;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .monospace {
+      font-family: monospace;
+      margin: 5px;
+    }
+    .ccdonate {
+      width: 330px;
+      margin: 20px auto 10px;
+      text-align: center;
+      .floatimg {
+        margin: 0 5px;
+      }
+    }
+    .signature {
+      color: #666;
+      font-size: 14px;
+    }
+    .tagline {
+      font-style: italic;
+      margin-bottom: 10px;
+      color: #666;
+      font-size: 18px;
+      text-align: center;
+    }
   }
 }
 
