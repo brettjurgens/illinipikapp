@@ -1,7 +1,7 @@
 # app.rb
 require 'sinatra'
-require 'haml'
 require 'sass'
+require 'haml'
 
 # newrelic to fix heroku spindown
 configure :production do
