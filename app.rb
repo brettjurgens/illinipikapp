@@ -3,6 +3,11 @@ require 'sinatra'
 require 'haml'
 require 'sass'
 
+# newrelic to fix heroku spindown
+configure :production do
+  require 'newrelic_rpm'
+end
+
 get '/' do
   begin
     haml :page, :locals => {:page => "welcome"}
