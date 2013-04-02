@@ -24,6 +24,10 @@ get '/pages/:name' do |name|
   end
 end
 
+get '/ping' do
+  return
+end
+
 get '/css/:name.css' do
   content_type 'text/css', :charset => 'utf-8'
   scss(:"/app/css/#{params[:name]}")
