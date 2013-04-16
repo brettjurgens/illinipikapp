@@ -1,3 +1,4 @@
+<div class="modal-backdrop"></div>
 We appreciate your willingness to help our Chapter financially. Donations go towards strengthening the House, both physically and metaphorically. Previous donations have gone to things like a TV, letters and a starshield for the chapter room.
 %br
 %br
@@ -6,7 +7,34 @@ We accept donations via credit card or check.
 %br
 %div
   %div.heading
+    Credit Card
+  We accept donations by Visa, Mastercard, Discover and American Express credit cards through Google Wallet.
+  %br
+  %br
+  See the table below for our current fundraising targets.
+%br
+%div
+  %div.heading
+    Check
+  Note: If you'd like to donate to a specific fundraising target (see table below), include the ID in the memo field of your check. Otherwsie, the use of the donation will be up to the chapter's discretion.
+  %br
+  %br
+  Please make your checks payable to Pi Kappa Phi and mail them to:
+  %div.monospace
+    Attn: Brett Jurgens
+    %br
+    Pi Kappa Phi Upsilon Chapter
+    %br
+    306 E. Gregory Drive
+    %br
+    Champaign, IL 61820
+%br
+%div
+  %div.heading
     Current Fundraising Targets
+
+/ In the future:
+/ Store in DB or setup sick service with an API, then iterate through JSON objects
 %table.table.table-striped
   %thead
     %tr
@@ -19,7 +47,7 @@ We accept donations via credit card or check.
       %th
         Proposal
       %th
-        Donate
+        More Info & Donate
       %th
         Status
   %tbody
@@ -29,13 +57,13 @@ We accept donations via credit card or check.
       %td
         Project #1
       %td
-        Description #1
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod...
       %td
         %a{:href=>"/static/fundraising/1.pdf"}
           Link (PDF)
       %td
-        %a{:href=>"#"}
-          via Google Wallet
+        %a{:onclick=>"modal('PKPY1', 'Project #1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 10)", :style=>"cursor:pointer;"}
+          Read More & Donate
       %td
         10%
     %tr
@@ -49,49 +77,10 @@ We accept donations via credit card or check.
         %a{:href=>"/static/fundraising/2.pdf"}
           Link (PDF)
       %td
-        %a{:href=>"#"}
-          via Google Wallet
+        %a{:onclick=>"modal('PKPY2', 'Project #2', 'Description #2', 10)", :style=>"cursor:pointer;"}
+          Read More & Donate
       %td
         10%
-%div
-  %div.heading
-    Credit Card
-  We accept donations by Visa, Mastercard, Discover and American Express credit cards through Google Wallet.
-  %br
-  %br
-  Note: If you'd like to donate to a specific fundraising target (see table above), use the link in the table to donate. The use of donations made in the below form will be up to the chapter's discretion.
-  %div.ccdonate
-    %form#BB_BuyButtonForm{:action => "https://checkout.google.com/cws/v2/Donations/432226974974771/checkoutForm", :method => "post", :name => "BB_BuyButtonForm", :onsubmit => "return validateAmount(this.item_price_1)", :target => "_top"}
-      %input{:name => "item_name_1", :type => "hidden", :value => "Pi Kappa Phi Upsilon Chapter"}/
-      %input{:name => "item_description_1", :type => "hidden", :value => "All money goes to improving our chapter and brotherhood. We appreciate your donation!"}/
-      %input{:name => "item_quantity_1", :type => "hidden", :value => "1"}/
-      %input{:name => "item_currency_1", :type => "hidden", :value => "USD"}/
-      %input{:name => "item_is_modifiable_1", :type => "hidden", :value => "true"}/
-      %input{:name => "item_min_price_1", :type => "hidden", :value => "0.01"}/
-      %input{:name => "item_max_price_1", :type => "hidden", :value => "25000.0"}/
-      %input{:name => "_charset_", :type => "hidden", :value => "utf-8"}/
-      %table{:cellpadding => "5", :cellspacing => "0", :width => "1%"}
-        %tr
-          %td{:align => "right", :nowrap => "nowrap", :width => "1%", :style => "vertical-align: top !important;padding:10px 8px 0;"}
-            $
-            %input#item_price_1{:name => "item_price_1", :onfocus => "this.style.color='black'; this.value='';", :size => "11", :style => "color:grey;margin-top:-1px;", :type => "text", :value => "Enter Amount"}/
-          %td{:align => "left", :width => "1%"}
-            %input{:alt => "Donate", :src => "https://checkout.google.com/buttons/donateNow.gif?merchant_id=432226974974771&w=115&h=50&style=white&variant=text&loc=en_US", :type => "image"}/
-%div
-  %div.heading
-    Check
-  Note: If you'd like to donate to a specific fundraising target (see table above), include the ID in the memo field of your check. Otherwsie, the use of the donation will be up to the chapter's discretion.
-  %br
-  %br
-  Please make your checks payable to Pi Kappa Phi and mail them to:
-  %div.monospace
-    Attn: Brett Jurgens
-    %br
-    Pi Kappa Phi Upsilon Chapter
-    %br
-    306 E. Gregory Drive
-    %br
-    Champaign, IL 61820
 
 
 %script{:type=>"text/javascript", :src=>"/js/jquery.number.min.js"}
@@ -100,13 +89,3 @@ We accept donations via credit card or check.
   $(function(){
     $('input#item_price_1').number( true, 2 );
   })
-  function validateAmount(amount){
-    if(amount.value.match( /^[0-9]+(\.([0-9]+))?$/)){
-      return true;
-    }else{
-      alert('You must enter a valid donation.');
-      amount.focus();
-      return false;
-    }
-  }
-

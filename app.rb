@@ -1,14 +1,7 @@
 # app.rb
 require 'sinatra'
-require 'stripe'
 require 'sass'
 require 'haml'
-
-# Stripe
-set :publishable_key, ENV['PUBLISHABLE_KEY']
-set :secret_key, ENV['SECRET_KEY']
-Stripe.api_key = settings.secret_key
-
 
 # newrelic to fix heroku spindown
 configure :production do
@@ -33,25 +26,6 @@ end
 
 get '/ping' do
   return
-end
-
-# Stripe Methods...
-post '/charge' do
-  # amount comes in cents
-  @amount = params[:amount]
-
-  customer = Stripe::Customer.create(
-    :email => params[:email],
-    :card => params[:stripeToken]
-  )
-
-  charge = Stripe::Charge.create(
-    :amount => @amount,
-    :description => "Donation",
-    :currency => "usd",
-    :customer => customer.id
-  )
-  haml :charge, :locals => {:charge => charge}
 end
 
 get '/css/:name.css' do
