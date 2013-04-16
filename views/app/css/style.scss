@@ -109,7 +109,7 @@ header {
   }
 }
 
-/* Featured Image! */
+/* Featured Image(s)! */
 @mixin featured_base($name) {
   width: 960px;
   height: 250px;
@@ -511,10 +511,14 @@ table {
   h1 {
     font-size: 18px;
     font-weight: bold;
+    margin-bottom: 5px;
   }
   h2 {
     margin-bottom: 15px;
     font-size: 14px;
+    text-align: justify;
+    text-justify: inter-word;
+    color: #333;
   }
   .ccdonate-modal {
     width: 230px;
