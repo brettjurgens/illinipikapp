@@ -197,3 +197,82 @@ footer {
     }
   }
 }
+
+
+
+
+
+/* Table code */
+// Stolen from Bootstrap
+table {
+  max-width: 100%;
+  background-color: transparent;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.table {
+  width: 100%;
+  margin-bottom: 20px;
+  th, td {
+    padding: 8px;
+    line-height: 20px;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid #dddddd;
+  }
+  th {
+    font-weight: bold;
+  }
+  thead th {
+    vertical-align: bottom;
+  }
+  caption + thead tr:first-child {
+    th, td {
+      border-top: 0;
+    }
+  }
+  colgroup + thead tr:first-child {
+    th, td {
+      border-top: 0;
+    }
+  }
+  thead:first-child tr:first-child {
+    th, td {
+      border-top: 0;
+    }
+  }
+  tbody + tbody {
+    border-top: 2px solid #dddddd;
+  }
+  .table {
+    background-color: #ffffff;
+  }
+}
+
+.table-striped tbody > tr:nth-child(odd) > {
+  td, th {
+    background-color: #f9f9f9;
+  }
+}
+
+.table-hover tbody tr:hover > {
+  td, th {
+    background-color: #f5f5f5;
+  }
+}
+
+table {
+  td[class*="span"], th[class*="span"] {
+    display: table-cell;
+    float: none;
+    margin-left: 0;
+  }
+}
+
+.row-fluid table {
+  td[class*="span"], th[class*="span"] {
+    display: table-cell;
+    float: none;
+    margin-left: 0;
+  }
+}
