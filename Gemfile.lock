@@ -3,23 +3,30 @@ GEM
   specs:
     daemons (1.1.9)
     eventmachine (1.0.3)
-    haml (4.0.1)
+    haml (4.0.2)
       tilt
-    newrelic_rpm (3.6.0.78)
+    mime-types (1.22)
+    multi_json (1.7.2)
+    newrelic_rpm (3.6.0.83)
     rack (1.5.2)
     rack-protection (1.5.0)
       rack
-    rdiscount (2.0.7.1)
+    rdiscount (2.0.7.2)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     sass (3.2.7)
     sinatra (1.4.2)
       rack (~> 1.5, >= 1.5.2)
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
+    stripe (1.7.11)
+      multi_json (>= 1.0.4, < 2)
+      rest-client (~> 1.4)
     thin (1.5.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
-    tilt (1.3.6)
+    tilt (1.3.7)
 
 PLATFORMS
   ruby
@@ -30,4 +37,5 @@ DEPENDENCIES
   rdiscount
   sass
   sinatra
+  stripe
   thin
