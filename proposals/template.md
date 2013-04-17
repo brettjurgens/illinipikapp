@@ -7,9 +7,6 @@ Recommended Pandoc flags for rendering:
 --smart --highlight-style=pygments -V geometry:margin=2cm --latex-engine=xelatex 
 -->
 
-If using Sublime Text, I recommend the SmartMarkdown plugin for editing.
-
-
 # Description
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
