@@ -504,13 +504,13 @@ table {
 
 /* Progress Bar customz */
 td.progbar {
-  width: 50px;
+  width: 100px;
   .progress {
     position: relative;
     .percent {
       position: absolute;
       text-align: center;
-      width: 50px;
+      width: 100px;
       color: #333;
       text-shadow: 1px 1px rgba(255, 255, 255, .25);
     }
