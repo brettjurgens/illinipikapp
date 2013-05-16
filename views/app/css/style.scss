@@ -351,7 +351,7 @@ table {
 
 .progress {
   overflow: hidden;
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
   height: 20px;
   background-color: #f7f7f7;
   background-image: -moz-linear-gradient(top, whitesmoke, #f9f9f9);
@@ -502,6 +502,21 @@ table {
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
 
+/* Progress Bar customz */
+td.progbar {
+  width: 50px;
+  .progress {
+    position: relative;
+    .percent {
+      position: absolute;
+      text-align: center;
+      width: 50px;
+      color: #333;
+      text-shadow: 1px 1px rgba(255, 255, 255, .25);
+    }
+  }
+}
+
 /* Modal */
 .modal-backdrop {
   background-color: white;
@@ -542,33 +557,7 @@ table {
   }
   .ccdonate-modal {
     width: 230px;
-    margin: 0 auto 0;
+    margin: 10px auto 0;
   }
 
-}
-.item-name, .export-title {
-  width: 100%;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 3px;
-  margin-bottom: 15px;
-  font-size: 20px;
-  color: #666;
-}
-.deadline-title {
-  font-size: 14px;
-  display: inline;
-}
-.deadline-select {
-  display: inline;
-  margin-left: 5px;
-}
-.deadline-enter {
-  float: right;
-  padding: 4px 10px;
-  border-radius: 5px;
-  font-size: 14px;
-  margin-top: -2px;
-  background: linear-gradient(to bottom, #62c462, #51a351);
-  color: white;
-  border: 1px solid #62c462;
 }
