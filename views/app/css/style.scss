@@ -49,7 +49,31 @@ table {
   border-spacing: 0;
 }
 
-/* Our styles */
+// Mixins. Yay.
+@mixin background_image_2x($name, $width, $height) {
+  background-size: $width $height;
+  background-image: url('/images/#{$name}.png');
+  @media only screen and (-webkit-min-device-pixel-ratio: 1.5), 
+  only screen and (-o-min-device-pixel-ratio: 3/2),
+  only screen and (min--moz-device-pixel-ratio : 1.5),
+  only screen and (min-device-pixel-ratio: 1.5) {
+    background-image: url('/images/#{$name}@2x.png');
+  }
+}
+
+@mixin featured_base($name, $retina: false) {
+  width: 960px;
+  height: 250px;
+  margin-bottom: 10px;
+  @if $retina{
+    @include background_image_2x($name, 960px, 250px);
+  }
+  @else {
+    background-image: url('/images/#{$name}.png');
+  }
+}
+
+// Our styles
 
 /* Globals */
 body {
@@ -70,15 +94,14 @@ a {
 .italic {
   font-style: italic;
 }
-/* Header */
 
+/* Header */
 header {
   height: 85px;
   #logo {
-    background-image: url('/images/logo.png');
     width: 240px;
     height: 75px;
-    background-size: 240px 75px;
+    @include background_image_2x('logo', 240px, 75px);
     float: left;
     cursor: pointer;
   }
@@ -110,14 +133,11 @@ header {
 }
 
 /* Featured Image(s)! */
-@mixin featured_base($name) {
-  width: 960px;
-  height: 250px;
-  margin-bottom: 10px;
-  background-image: url('/images/#{$name}.png');
-}
 #welcome_featured {
   @include featured_base("flags")
+}
+#about_featured {
+  @include featured_base("chapterpicture", true)
 }
 
 /* Section shit */
@@ -193,7 +213,7 @@ footer {
     float: left;
     .twitter {
       position: relative;
-      top: 3px;
+      // top: 3px;
     }
   }
 }
