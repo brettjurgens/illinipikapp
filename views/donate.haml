@@ -47,41 +47,29 @@ We accept donations via credit card or check.
       %th
         Proposal
       %th
-        More Info & Donate
+        Donate
       %th
         Status
   %tbody
-    %tr
-      %td
-        PKPY1
-      %td
-        Project #1
-      %td
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod...
-      %td
-        %a{:href=>"/static/fundraising/1.pdf"}
-          Link (PDF)
-      %td
-        %a{:onclick=>"modal('PKPY1', 'Project #1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 10)", :style=>"cursor:pointer;"}
-          Read More & Donate
-      %td
-        10%
-    %tr
-      %td
-        PKPY2
-      %td
-        Project #2
-      %td
-        Description #2
-      %td
-        %a{:href=>"/static/fundraising/2.pdf"}
-          Link (PDF)
-      %td
-        %a{:onclick=>"modal('PKPY2', 'Project #2', 'Description #2', 10)", :style=>"cursor:pointer;"}
-          Read More & Donate
-      %td
-        10%
-
+    -for project in projects["Projects"]
+      %tr
+        %td
+          = project["id"]
+        %td
+          = project["name"]
+        %td
+          = project["short-description"]
+        %td
+          %a{:href=>project["proposal-link"]}
+            (PDF)
+        %td
+          %a{:onclick=>"modal('#{project["id"]}', '#{project["name"]}', '#{project["long-description"]}', '#{project["percent"]}')", :style=>"cursor:pointer;"}
+            Donate
+        %td.progbar
+          .progress
+            .bar.bar-success{:style=>"width: #{project["percent"]}%"}
+            .percent
+              ="#{project["percent"]}%"
 
 %script{:type=>"text/javascript", :src=>"/js/jquery.number.min.js"}
 

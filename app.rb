@@ -2,6 +2,7 @@
 require 'sinatra'
 require 'sass'
 require 'haml'
+require 'json'
 
 # newrelic to fix heroku spindown
 configure :production do
@@ -16,11 +17,17 @@ get '/' do
   end
 end
 
+
 get '/pages/:name' do |name|
+  # set up locals here, in case we have special pages (like donate)
+  locals = {:page => name}
+  if name.downcase == "donate"
+    locals[:projects] = JSON.parse(File.read("projects.json"))
+  end
   begin
-    haml :page, :locals => {:page => name}
+    haml :page, :locals => locals
   rescue Errno::ENOENT
-    haml :error, :locals => {:page => name}
+    haml :error, :locals => locals
   end
 end
 

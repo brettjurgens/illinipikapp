@@ -1,0 +1,24 @@
+{
+  "Projects": [
+    {
+      "id" : "PKPY1",
+      "name" : "Project #1",
+      "short-description" : "Lorem ipsum.",
+      "long-description" : "Lorem ipsum...",
+      "total-price" : "100",
+      "current-price" : "10",
+      "percent" : "10",
+      "proposal-link" : "http://.../proposal.pdf"
+    },
+    {
+      "id" : "PKPY2",
+      "name" : "Project #2",
+      "short-description" : "Lorem ipsum.",
+      "long-description" : "Lorem ipsum...",
+      "total-price" : "200",
+      "current-price" : "30",
+      "percent" : "15",
+      "proposal-link" : "http://.../proposal.pdf"
+    }
+  ]
+}
