@@ -18,17 +18,17 @@
       "total-price" : "500",
       "current-price" : "0",
       "percent" : "0",
-      "proposal-link" : "/proposals/bricksign.pdf"
+      "proposal-link" : "/proposals/flagsandpole.pdf"
     },
     {
       "id" : "TRPHY",
       "name" : "Trophy Case",
       "short-description" : "A trophy case would be a great way to showcase our achievements throughout the years.",
       "long-description" : "Since it&apos;s founding, Upsilon has received many awards. However, there is no dedicated location for displaying such achievements. With a trophy case, we&apos;d be able to dedicate one area of the house to displaying our numerous awards, while also keeping them out of harms way. Such a device would not only prevent theft, but also ensure preservation.",
-      "total-price" : "200",
+      "total-price" : "500",
       "current-price" : "0",
       "percent" : "0",
-      "proposal-link" : "/proposals/bricksign.pdf"
+      "proposal-link" : "/proposals/trophycase.pdf"
     }
   ]
 }
