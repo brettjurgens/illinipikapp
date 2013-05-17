@@ -2,13 +2,13 @@
 We appreciate your willingness to help our Chapter financially. Donations go towards strengthening the House, both physically and metaphorically. Previous donations have gone to things like a TV, letters and a starshield for the chapter room.
 %br
 %br
-We accept donations via credit card or check.
+We accept donations via credit card, Google Wallet, PayPal or check.
 %br
 %br
 %div
   %div.heading
-    Credit Card
-  We accept donations by Visa, Mastercard, Discover and American Express credit cards through Google Wallet.
+    Credit Card, Google Wallet and Paypal
+  We accept donations by Visa, Mastercard, Discover and American Express credit cards through Google Wallet. We also accept PayPal.
   %br
   %br
   See the table below for our current fundraising targets.
@@ -61,16 +61,23 @@ We accept donations via credit card or check.
         %td
           = project["short-description"]
         %td
-          %a{:href=>project["proposal-link"]}
-            (PDF)
+          - if project["proposal-link"].length > 0
+            %a{:href=>project["proposal-link"]}
+              (PDF)
+          - else
+            N/A
         %td
           %a{:onclick=>"modal('#{project.to_json}')", :style=>"cursor:pointer;"}
             Donate
         %td.progbar
-          .progress
-            .bar.bar-success{:style=>"width: #{project["percent"]}%"}
-            .percent
-              ="#{project["percent"]}%"
+          - if project["total-price"].to_i > 0
+            .progress
+              .bar.bar-success{:style=>"width: #{project["percent"]}%"}
+              .percent
+                ="#{project["percent"]}%"
+          - else 
+            %center
+              N/A
 
 %script{:type=>"text/javascript", :src=>"/js/jquery.number.min.js"}
 

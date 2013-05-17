@@ -32,6 +32,17 @@
       "percent" : "0",
       "proposal-link" : "/proposals/trophycase.pdf",
       "paypal" : "Q24QH99ZMWKDC"
+    },
+    {
+      "id" : "GEN",
+      "name" : "General Donation",
+      "short-description" : "General donations will go towards things not listed.",
+      "long-description" : "This donation will go towards something not listed and its final use is up to the Chapter&apos;s discretion.",
+      "total-price" : "0",
+      "current-price" : "0",
+      "percent" : "0",
+      "proposal-link" : "",
+      "paypal" : "4EUFMW3MX8AG6"
     }
   ]
 }

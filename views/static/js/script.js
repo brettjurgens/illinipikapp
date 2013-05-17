@@ -53,7 +53,8 @@ function modal(obj) {
 
   $('<h1>' + itemname + '</h1><h2>' + itemdesc + '</h2>').appendTo('.modal');
 
-  $('<div class="progress"><div class="bar bar-success" style="width: ' + progress + '%"></div></div>').appendTo('.modal');
+  if(obj['total-price'] != "0")
+    $('<div class="progress"><div class="bar bar-success" style="width: ' + progress + '%"></div></div>').appendTo('.modal');
   
   $('<div class="ccdonate-modal"></div>').appendTo('.modal');
 
