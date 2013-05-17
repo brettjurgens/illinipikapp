@@ -27,6 +27,7 @@ get '/pages/:name' do |name|
   # set up locals here, in case we have special pages (like donate)
   locals = {:page => name}
   if name.downcase == "donate"
+    # move this to its own service later on (with a sick RESTful API)
     locals[:projects] = JSON.parse(File.read("projects.json"))
   end
   begin
