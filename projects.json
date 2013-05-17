@@ -1,24 +1,34 @@
 {
   "Projects": [
     {
-      "id" : "PKPY1",
-      "name" : "Project #1",
-      "short-description" : "Lorem ipsum.",
-      "long-description" : "Lorem ipsum...",
-      "total-price" : "100",
-      "current-price" : "10",
-      "percent" : "10",
-      "proposal-link" : "http://.../proposal.pdf"
+      "id" : "SIGN",
+      "name" : "Brick Sign",
+      "short-description" : "A brick sign for our lawn would help the appearance of our chapter house.",
+      "long-description" : "A brick sign for our lawn would help the appearance of our chapter house. Such a sign would do wonders for helping us put our name out there as well as help out in recruitment. Potential new members would be able to see the sign and be able to easy recognize our chapter.",
+      "total-price" : "5000",
+      "current-price" : "0",
+      "percent" : "0",
+      "proposal-link" : "/proposals/bricksign.pdf"
     },
     {
-      "id" : "PKPY2",
-      "name" : "Project #2",
-      "short-description" : "Lorem ipsum.",
-      "long-description" : "Lorem ipsum...",
+      "id" : "FLAG",
+      "name" : "Flag Pole & Flags",
+      "short-description" : "Help us show our patriotism and PiKapp pride by donating to our flag fund.",
+      "long-description" : "Help us show our patriotism and PiKapp pride by donating to our flag fund. With these donations, we hope to purchase a flag pole for our lawn to showcase the American and Pi Kappa Phi flags. We&apos;d love to show our pride in both America and Pi Kappa Phi and hoisting these flags in the air is a great way to show it.",
+      "total-price" : "500",
+      "current-price" : "0",
+      "percent" : "0",
+      "proposal-link" : "/proposals/bricksign.pdf"
+    },
+    {
+      "id" : "TRPHY",
+      "name" : "Trophy Case",
+      "short-description" : "A trophy case would be a great way to showcase our achievements throughout the years.",
+      "long-description" : "Since it&apos;s founding, Upsilon has received many awards. However, there is no dedicated location for displaying such achievements. With a trophy case, we&apos;d be able to dedicate one area of the house to displaying our numerous awards, while also keeping them out of harms way. Such a device would not only prevent theft, but also ensure preservation.",
       "total-price" : "200",
-      "current-price" : "30",
-      "percent" : "15",
-      "proposal-link" : "http://.../proposal.pdf"
+      "current-price" : "0",
+      "percent" : "0",
+      "proposal-link" : "/proposals/bricksign.pdf"
     }
   ]
 }

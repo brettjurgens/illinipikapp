@@ -3,8 +3,7 @@
 % Last Updated: DATE
 
 <!-- 
-Recommended Pandoc flags for rendering:
---smart --highlight-style=pygments -V geometry:margin=2cm --latex-engine=xelatex 
+pandoc --smart --highlight-style=pygments -V geometry:margin=2cm --latex-engine=xelatex thisfile.md -o output.pdf
 -->
 
 # Description

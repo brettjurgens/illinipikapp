@@ -42,6 +42,10 @@ end
 
 set :public_folder, 'views/static'
 
+get '/proposals/:name.pdf' do
+  redirect 'proposals/:name.pdf'
+end
+
 get '/js/:name.js' do
   redirect 'js/:name.js'
 end
