@@ -49,7 +49,8 @@ We accept donations via credit card or check.
       %th
         Donate
       %th
-        Status
+        %center
+          Status
   %tbody
     -for project in projects["Projects"]
       %tr
@@ -63,7 +64,7 @@ We accept donations via credit card or check.
           %a{:href=>project["proposal-link"]}
             (PDF)
         %td
-          %a{:onclick=>"modal('#{project["id"]}', '#{project["name"]}', '#{project["long-description"]}', '#{project["percent"]}')", :style=>"cursor:pointer;"}
+          %a{:onclick=>"modal('#{project.to_json}')", :style=>"cursor:pointer;"}
             Donate
         %td.progbar
           .progress

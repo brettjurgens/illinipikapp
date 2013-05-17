@@ -18,32 +18,35 @@ $(function(){
   });
   $('.modal-backdrop').bind('click', function(){
     closeModal();
-  })
+  });
 
 })
 
-function validateAmount(amount){
-  if(amount.value.match( /^[0-9]+(\.([0-9]+))?$/)){
+function validateAmount(){
+  amount = $('#item_price_1');
+  $('.donate-error').remove();
+  if(amount.val().match( /^[0-9]+(\.([0-9]+))?$/) && amount.val() != 0){
     return true;
   }else{
-    alert('You must enter a valid donation.');
+    $('<div class="donate-error">Please enter a valid donation!</div>').appendTo('.modal');
     amount.focus();
     return false;
   }
 }
 
 // modal code
-function modal(id, itemname, itemdesc, progress) {
+function modal(obj) {
+  obj = $.parseJSON(obj);
+  id = obj['id'], itemname=obj['name'], itemdesc=obj['long-description'], progress=obj['percent'];
   $('.modal-backdrop').fadeIn();
   $('body').addClass('bodyModal');
   $('<div class="modal"></div>').hide().appendTo('body');
-
 
   $('<h1>' + itemname + '</h1><h2>' + itemdesc + '</h2>').appendTo('.modal');
 
   $('<div class="progress"><div class="bar bar-success" style="width: ' + progress + '%"></div></div>').appendTo('.modal');
   
-  $('<div class="ccdonate-modal"><form action="https://checkout.google.com/cws/v2/Donations/432226974974771/checkoutForm" id="BB_' + id + '" method="post" name="BB_BuyButtonForm" onSubmit="return validateAmount(this.item_price_1)" target="_top"></form></div>').appendTo('.modal');
+  $('<div class="ccdonate-modal"><form action="https://checkout.google.com/cws/v2/Donations/432226974974771/checkoutForm" id="BB_' + id + '" method="post" name="BB_BuyButtonForm" onSubmit="return validateAmount()" target="_top"></form></div>').appendTo('.modal');
   
   $('<input name="item_name_1" type="hidden" value="' + itemname + '"/>').appendTo('#BB_' + id);
   $('<input name="item_description_1" type="hidden" value="' + itemdesc + '"/>').appendTo('#BB_' + id);
