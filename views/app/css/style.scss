@@ -161,10 +161,6 @@ article {
       text-transform: uppercase;
       margin-bottom: 2px;
     }
-    .monospace {
-      font-family: monospace;
-      margin: 5px;
-    }
     .ccdonate {
       width: 230px;
       margin: 20px auto 10px;
@@ -186,7 +182,11 @@ article {
     }
   }
 }
-
+/* monospace class */
+.monospace {
+  font-family: monospace;
+  margin: 5px;
+}
 /* History Page */
 figure.historyimagecontainer {
   text-align: center;
@@ -550,8 +550,17 @@ td.progbar {
     color: #333;
   }
   .ccdonate-modal {
-    width: 230px;
-    margin: 10px auto 0;
+    margin: 10px auto 30px;
+    .donate-header {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 3px;
+      margin-bottom: 5px;
+    }
+    form {
+      width: 230px;
+      margin: 0 auto;
+      text-align: center;
+    }
   }
   .donate-error {
     text-align: center;

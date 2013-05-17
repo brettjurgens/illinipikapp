@@ -8,7 +8,8 @@
       "total-price" : "5000",
       "current-price" : "0",
       "percent" : "0",
-      "proposal-link" : "/proposals/bricksign.pdf"
+      "proposal-link" : "/proposals/bricksign.pdf",
+      "paypal" : "UEQ44DPFLT6GJ"
     },
     {
       "id" : "FLAG",
@@ -18,7 +19,8 @@
       "total-price" : "500",
       "current-price" : "0",
       "percent" : "0",
-      "proposal-link" : "/proposals/flagsandpole.pdf"
+      "proposal-link" : "/proposals/flagsandpole.pdf",
+      "paypal" : "JB4G7EMW3432G"
     },
     {
       "id" : "TRPHY",
@@ -28,7 +30,8 @@
       "total-price" : "500",
       "current-price" : "0",
       "percent" : "0",
-      "proposal-link" : "/proposals/trophycase.pdf"
+      "proposal-link" : "/proposals/trophycase.pdf",
+      "paypal" : "Q24QH99ZMWKDC"
     }
   ]
 }
