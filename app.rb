@@ -4,6 +4,11 @@ require 'sass'
 require 'haml'
 require 'json'
 
+# dev
+require "sinatra/reloader" if development?
+
+set :port, 1183
+
 # newrelic to fix heroku spindown
 configure :production do
   require 'newrelic_rpm'
@@ -37,19 +42,7 @@ end
 
 get '/css/:name.css' do
   content_type 'text/css', :charset => 'utf-8'
-  scss(:"/app/css/#{params[:name]}")
+  scss(:"/app/css/#{params[:name]}", :style=>:compressed)
 end
 
 set :public_folder, 'views/static'
-
-get '/proposals/:name.pdf' do
-  redirect 'proposals/:name.pdf'
-end
-
-get '/js/:name.js' do
-  redirect 'js/:name.js'
-end
-
-get '/images/:name' do
-  redirect 'images/:name'
-end
