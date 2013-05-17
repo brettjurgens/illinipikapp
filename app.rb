@@ -7,7 +7,7 @@ require 'json'
 # dev
 require "sinatra/reloader" if development?
 
-set :port, 1183
+set :port, 1183 if development?
 
 # newrelic to fix heroku spindown
 configure :production do
