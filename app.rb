@@ -22,18 +22,19 @@ get '/' do
   end
 end
 
-
-get '/pages/:name' do |name|
-  # set up locals here, in case we have special pages (like donate)
-  locals = {:page => name}
-  if name.downcase == "donate"
-    # move this to its own service later on (with a sick RESTful API)
-    locals[:projects] = JSON.parse(File.read("projects.json"))
-  end
-  begin
-    haml :page, :locals => locals
-  rescue Errno::ENOENT
-    haml :error, :locals => locals
+['/:name', '/:name/', '/pages/:name', '/pages/:name/'].each do |path|
+  get path do |name|
+    # set up locals here, in case we have special pages (like donate)
+    locals = {:page => name}
+    if name.downcase == "donate"
+      # move this to its own service later on (with a sick RESTful API)
+      locals[:projects] = JSON.parse(File.read("projects.json"))
+    end
+    begin
+      haml :page, :locals => locals
+    rescue Errno::ENOENT
+      haml :error, :locals => locals
+    end
   end
 end
 
