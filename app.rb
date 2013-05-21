@@ -22,6 +22,10 @@ get '/' do
   end
 end
 
+get '/ping' do
+  return
+end
+
 ['/:name', '/:name/', '/pages/:name', '/pages/:name/'].each do |path|
   get path do |name|
     # set up locals here, in case we have special pages (like donate)
@@ -38,9 +42,6 @@ end
   end
 end
 
-get '/ping' do
-  return
-end
 
 get '/css/:name.css' do
   content_type 'text/css', :charset => 'utf-8'
