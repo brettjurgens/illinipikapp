@@ -1,0 +1,16 @@
+= haml :head, :locals=>{:page => "donate"}
+
+%article#content
+  %span.section-header
+    Thanks
+  .section-body
+    Thank you for your donation of 
+    = "$#{amount}"
+    for
+    %span.italic
+      = "#{name}."
+    %br
+    %br
+    = "We will send a confirmation to #{email}."
+
+= haml :foot

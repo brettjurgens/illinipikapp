@@ -1,0 +1,132 @@
+= haml :head, :locals=>{:page => "donate"}
+
+%article#content
+  %span.section-header
+    Donation Details
+  .section-body
+    %table.table.neworder
+      %thead
+        %tr
+          %th
+            Item
+          %th
+            Price
+      %tbody
+        %tr
+          %td
+            .name
+              = name
+            .desc
+              = desc
+          %td
+            %input{:type=>"text", :id=>"price", :autofocus => "true"}
+        %tr.bold
+          %td
+            .textright
+              Total:
+          %td
+            $
+            %span.total-amount
+              0.00
+        %tr.bold
+          %td
+            .textright
+              Total Donated (after processing fees)
+          %td
+            $
+            %span.donate-total
+              0.00
+    .order
+      .order-stripe
+        %form{ :action => "/charge", :method => "POST"}
+          %label{:for=>"email"}
+            Email Address:
+          %input{:type => "email", :placeholder => "Enter your email address", :name => "email", :id=>"email", :class=>"invalid", :autocomplete=>"off"}
+          %br
+          %br
+          %input{ :type => "hidden", :name=>"amount", :id=>"formamount"}
+          %input{ :type => "hidden", :name=>"print_amount", :id=>"printamount"}
+          %input{ :type => "hidden", :name=>"name", :value=> "#{name}"}
+          %input{ :type => "hidden", :name=>"id", :value=> "#{id}"}
+          %input{ :type => "hidden", :name=>"desc", :value=> "#{desc}"}
+          %button.stripe-button-el{:style => "visibility: visible;", :type => "submit"}
+            %span{:style => "display: block; min-height: 30px;"} Pay with Card
+
+          .validemail
+            Please enter a valid email in order to continue!
+    .order-info
+      .address
+        Pi Kappa Phi Upsilon Chapter, 306 E. Gregory Drive, Champaign, IL 61820 US
+      Your credit card will be charged by Stripe (our payment processor) and will appear on your statement as 
+      %span.italic
+        PKP UPSILON.
+      We also collect your billing address and will update our records to include this as your mailing address.
+
+= haml :foot
+
+%script{:type=>"text/javascript", :src=>"/js/jquery.number.min.js"}
+%script{:type=>"text/javascript", :src=>"https://checkout.stripe.com/v2/checkout.js"}
+
+:javascript
+  $(function(){
+    $('#price').number( true, 2 );
+
+    $('#price').keyup(function() {
+      amount = parseFloat($("#price").val());
+      amount = amount.toFixed(2);
+      $('.total-amount').text(amount);
+      donateAmount = amount*0.971 - 0.3;
+      $('.donate-total').text(parseFloat(donateAmount).toFixed(2));
+      $('form > script').remove();
+    })
+
+    $('#price').blur(function() {
+      if(validateAmount('#price')) {
+        $(this).removeClass('invalid');
+        $(this).addClass('valid');
+      }
+      else {
+        $(this).removeClass('valid');
+        $(this).addClass('invalid');
+      }
+    });
+
+    $('#email').keyup(function(){
+      if(isEmail($(this).val())) {
+        $(this).removeClass('invalid');
+        $(this).addClass('valid');
+        $('.validemail').hide();
+        $('.stripe-button-el').show();
+      }
+      else {
+        $(this).removeClass('valid')
+        $(this).addClass('invalid')
+        $('.validemail').show();
+        $('.stripe-button-el').hide();
+      }
+    })
+
+    $('.stripe-button-el').click(function(){
+      var token = function(res){
+        var $input = $('<input type=hidden name=stripeToken />').val(res.id);
+        $('form').append($input).submit();
+      };
+      val = parseFloat($('#price').val()*100);
+
+      $('#formamount').val(val); 
+      $('#printamount').val(parseFloat($('#price').val()).toFixed(2));
+      
+      StripeCheckout.open({
+        key:         "#{stripe_pk}",
+        address:     true,
+        amount:      val,
+        currency:    'usd',
+        name:        "#{name}",
+        description: "#{desc}",
+        panelLabel:  'Checkout',
+        token:       token
+      });
+
+      return false;
+    })
+  });

@@ -32,12 +32,12 @@ $(function(){
 })
 
 function validateAmount(){
-  amount = $('#item_price_1');
+  amount = $('#price');
   $('.donate-error').remove();
   if(amount.val().match( /^[0-9]+(\.([0-9]+))?$/) && amount.val() != 0){
     return true;
   }else{
-    $('<div class="donate-error">Please enter a valid donation!</div>').appendTo('.modal');
+    $('<tr class="donate-error"><td><div class="textright">Please enter a valid donation!</div></td><td></td></tr>').appendTo('.neworder tbody');
     amount.focus();
     return false;
   }
@@ -58,18 +58,14 @@ function modal(obj) {
   
   $('<div class="ccdonate-modal"></div>').appendTo('.modal');
 
-  // google checkout
-  $('<div class="donate-header">Via Google Wallet (with Credit Cards)</div>').appendTo('.ccdonate-modal');
-  $('<form action="https://checkout.google.com/cws/v2/Donations/432226974974771/checkoutForm" id="BB_' + id + '" method="post" name="BB_BuyButtonForm" onSubmit="return validateAmount()" target="_top"></form>').appendTo('.ccdonate-modal');
-  $('<input name="item_name_1" type="hidden" value="' + itemname + '"/>').appendTo('#BB_' + id);
-  $('<input name="item_description_1" type="hidden" value="' + itemdesc + '"/>').appendTo('#BB_' + id);
-  $('<input name="item_quantity_1" type="hidden" value="1"/>').appendTo('#BB_' + id);
-  $('<input name="item_currency_1" type="hidden" value="USD"/>').appendTo('#BB_' + id);
-  $('<input name="item_is_modifiable_1" type="hidden" value="true"/>').appendTo('#BB_' + id);
-  $('<input name="item_min_price_1" type="hidden" value="0.01"/>').appendTo('#BB_' + id);
-  $('<input name="item_max_price_1" type="hidden" value="25000.0"/>').appendTo('#BB_' + id);
-  $('<input name="_charset_" type="hidden" value="utf-8"/>').appendTo('#BB_' + id); 
-  $('<table cellpadding="5" cellspacing="0" width="1%"><tr><td align="right" nowrap="nowrap" width="1%" style="vertical-align: top !important;padding:8px 8px 0;">$ <input id="item_price_1" name="item_price_1" onfocus="this.style.color="black"; this.value="";" size="11" style="color:grey;" type="text" value="Enter Amount"/></td><td align="left" width="1%"><input alt="Donate" src="https://checkout.google.com/buttons/donateNow.gif?merchant_id=432226974974771&w=115&h=50&style=trans&variant=text&loc=en_US" type="image"/></td></tr></table>').appendTo('#BB_' + id);
+  // stripe...
+  $('<div class="donate-header">Via Credit Card</div>').appendTo('.ccdonate-modal');
+  $('<form action="http://localhost:1183/neworder" id="BB_' + id + '" method="post" name="BB_BuyButtonForm" onSubmit="return validateAmount()" target="_top"></form>').appendTo('.ccdonate-modal');
+  $('<input name="name" type="hidden" value="' + itemname + '"/>').appendTo('#BB_' + id);
+  $('<input name="desc" type="hidden" value="' + itemdesc + '"/>').appendTo('#BB_' + id);
+  $('<input name="id" type="hidden" value="' + id + '"/>').appendTo('#BB_' + id);
+  $('<button type="submit">Donate</button>').appendTo("#BB_" + id);
+  // $('<table cellpadding="5" cellspacing="0" width="1%"><tr><td align="right" nowrap="nowrap" width="1%" style="vertical-align: top !important;padding:8px 8px 0;">$ <input id="item_price_1" name="amount" onfocus="this.style.color="black"; this.value="";" size="11" style="color:grey;" type="text" value="Enter Amount"/></td><td align="left" width="1%"><input alt="Donate" src="https://checkout.google.com/buttons/donateNow.gif?merchant_id=432226974974771&w=115&h=50&style=trans&variant=text&loc=en_US" type="image"/></td></tr></table>').appendTo('#BB_' + id);
   
   // paypal
   $('<div class="donate-header">Via Paypal</div>').appendTo('.ccdonate-modal');
@@ -83,7 +79,6 @@ function modal(obj) {
   $('<div class="donate-header">Via Check</div>').appendTo('.ccdonate-modal');
   $('<h2>Make your check payable to Pi Kappa Phi with ' + id + ' as the memo and mail it to:</h2><div class="monospace">Attn: Brett Jurgens<br>Pi Kappa Phi Upsilon Chapter<br>306 E. Gregory Drive<br>Champaign, IL 61820</div>').appendTo('.ccdonate-modal');
 
-  $('input#item_price_1').number( true, 2 );
   $('.modal').fadeIn();
 };
 
@@ -91,4 +86,9 @@ function closeModal() {
   $('.modal-backdrop').fadeOut();
   $('.modal').remove();
   $('body').removeClass('bodyModal');
+};
+
+function isEmail(email) {
+    var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return regex.test(email);
 };
