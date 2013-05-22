@@ -70,6 +70,8 @@ post '/charge' do
   coll = db["users"]
   res = coll.find_one("email" => email)
 
+  # for error handling...?
+  continue = true
   # and then...
   if res != nil
     customer = Stripe::Customer.retrieve({ :id => res['id'] })
@@ -78,75 +80,91 @@ post '/charge' do
       customer.save
     rescue
       haml :ordererror, :locals => { "error" => "Card error."}
+      continue = false
     end
   else
-    customer = Stripe::Customer.create(
-      :email => email,
-      :card => params[:stripeToken]
-    )
-    new_cust = { "id" => customer.id, "email" => email }
-    coll.insert(new_cust)
+    begin
+      customer = Stripe::Customer.create(
+        :email => email,
+        :card => params[:stripeToken]
+      )
+      new_cust = { "id" => customer.id, "email" => email }
+      coll.insert(new_cust)
+    rescue
+      print "shit shit shit.\n"
+      continue = false
+    end
   end
+  if(continue)
+    begin
+      charge = Stripe::Charge.create(
+        :amount => amount,
+        :description => name,
+        :currency => 'usd',
+        :customer => customer.id
+      )
+    rescue
+      print "fuck something fucked up.\n"
+      continue = false
+    end
+    if(continue)
+      begin
+        # send an email confirmation...
+        m = Mandrill::API.new # All official Mandrill API clients will automatically pull your API key from the environment
 
-  begin
-    charge = Stripe::Charge.create(
-      :amount => amount,
-      :description => name,
-      :currency => 'usd',
-      :customer => customer.id
-    )
-    # send an email confirmation...
-    m = Mandrill::API.new # All official Mandrill API clients will automatically pull your API key from the environment
+        print_amount = '%.2f' % print_amount
+        donateamt = print_amount.to_f*0.971 - 0.3
+        donateamt = '%.2f' % donateamt
 
-    print_amount = '%.2f' % print_amount
-    donateamt = print_amount.to_f*0.971 - 0.3
-    donateamt = '%.2f' % donateamt
+        render = m.templates.render 'receipt', [
+            {
+              :name => "name",
+              :content => name
+            },
+            {
+              :name => "desc",
+              :content => desc
+            },
+            {
+              :name => "total",
+              :content => "$#{print_amount}"
+            },
+            {
+              :name => "donate-total",
+              :content => "$#{donateamt}"
+            }
+          ]
 
-    render = m.templates.render 'receipt', [
-        {
-          :name => "name",
-          :content => name
-        },
-        {
-          :name => "desc",
-          :content => desc
-        },
-        {
-          :name => "total",
-          :content => "$#{print_amount}"
-        },
-        {
-          :name => "donate-total",
-          :content => "$#{donateamt}"
+        message = {
+          :subject => "Thank you for your donation!",
+          :from_name => "Pi Kappa Phi Upsilon Chapter",
+          :text => "Thank you for your donation of #{amount} and your help in funding #{name}.",
+          :to => [
+            {
+              :email => email,
+              :name => email
+            }
+          ],
+          :html => render['html'],
+          :from_email => "no-reply@illinipikapp.com"
         }
-      ]
 
-    message = {
-      :subject => "Thank you for your donation!",
-      :from_name => "Pi Kappa Phi Upsilon Chapter",
-      :text => "Thank you for your donation of #{amount} and your help in funding #{name}.",
-      :to => [
-        {
-          :email => email,
-          :name => email
-        }
-      ],
-      :html => render['html'],
-      :from_email => "no-reply@illinipikapp.com"
-    }
+        send = m.messages.send message
+      rescue 
+        print "Email could not be sent"
+      end
+    else
+      haml :ordererror, :locals => { "error" => "Error charging your card, please go back and try again."}
+    end # end continue if
 
-    send = m.messages.send message
-
-  rescue Stripe::CardError
-    print env['sinatra.error'].message
-    haml :ordererror, :locals => { "error" => "Error charging your card."}
-  end
-
-  begin
-    haml :charged, :locals => { :amount => print_amount, :email => email, :name => name, :desc => desc }
-  rescue
-    haml :ordererror, :locals => {"error" => "An error occured while processing your donation. Please contact pkpupsilon@gmail.com for more information."}
-  end
+    begin
+      haml :charged, :locals => { :amount => print_amount, :email => email, :name => name, :desc => desc }
+    rescue
+      haml :ordererror, :locals => {"error" => "An error occured while processing your donation. Please contact pkpupsilon@gmail.com for more information."}
+    end
+  else
+    haml :ordererror, :locals => { "error" => "Error charging your card, please go back and try again."}
+  end # end continue if
 end
 
 get '/testmongo' do
