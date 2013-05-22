@@ -60,7 +60,7 @@ function modal(obj) {
 
   // stripe...
   $('<div class="donate-header">Via Credit Card</div>').appendTo('.ccdonate-modal');
-  $('<form action="http://localhost:1183/neworder" id="BB_' + id + '" method="post" name="BB_BuyButtonForm" onSubmit="return validateAmount()" target="_top"></form>').appendTo('.ccdonate-modal');
+  $('<form action="https://illinipikapp.herokuapp.com/neworder" id="BB_' + id + '" method="post" name="BB_BuyButtonForm" onSubmit="return validateAmount()" target="_top"></form>').appendTo('.ccdonate-modal');
   $('<input name="name" type="hidden" value="' + itemname + '"/>').appendTo('#BB_' + id);
   $('<input name="desc" type="hidden" value="' + itemdesc + '"/>').appendTo('#BB_' + id);
   $('<input name="id" type="hidden" value="' + id + '"/>').appendTo('#BB_' + id);
