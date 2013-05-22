@@ -10,8 +10,8 @@ require 'mandrill'
 
 # get some (stripe)
 require File.join(File.dirname(__FILE__), 'config') if development?
-set :publishable_key, ENV['TEST_STRIPE_PUBLISHABLE']
-set :secret_key, ENV['TEST_STRIPE_SECRET']
+set :publishable_key, ENV['STRIPE_PUBLISHABLE']
+set :secret_key, ENV['STRIPE_SECRET']
 Stripe.api_key = settings.secret_key
 
 # dev
