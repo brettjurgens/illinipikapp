@@ -1,18 +1,17 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
+// http://meyerweb.com/eric/tools/css/reset/ 
+//   v2.0 | 20110126
+//   License: none (public domain)
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
   margin: 0;
   padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
   vertical-align: baseline;
 }
 
-/* HTML5 display-role reset for older browsers */
+// HTML5 display-role reset for older browsers
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
   display: block;
@@ -50,7 +49,7 @@ table {
 }
 
 // Mixins. Yay.
-@mixin background_image_2x($name, $width, $height) {
+@mixin background-image-2x($name, $width, $height) {
   background-size: $width $height;
   background-image: url('/images/#{$name}.png');
   @media only screen and (-webkit-min-device-pixel-ratio: 1.5), 
@@ -61,12 +60,12 @@ table {
   }
 }
 
-@mixin featured_base($name, $retina: false) {
+@mixin featured-base($name, $retina: false) {
   width: 960px;
   height: 250px;
   margin-bottom: 10px;
   @if $retina{
-    @include background_image_2x($name, 960px, 250px);
+    @include background-image-2x($name, 960px, 250px);
   }
   @else {
     background-image: url('/images/#{$name}.png');
@@ -75,7 +74,7 @@ table {
 
 // Our styles
 
-/* Globals */
+// Globals
 body {
   margin: 10px auto;
   width: 960px;
@@ -101,13 +100,13 @@ a {
   text-align: right;
 }
 
-/* Header */
+// Header
 header {
   height: 85px;
   #logo {
     width: 240px;
     height: 75px;
-    @include background_image_2x('logo', 240px, 75px);
+    @include background-image-2x('logo', 240px, 75px);
     float: left;
     cursor: pointer;
   }
@@ -138,15 +137,15 @@ header {
   }
 }
 
-/* Featured Image(s)! */
+// Featured Image(s)!
 #welcome_featured {
-  @include featured_base("flags")
+  @include featured-base("flags")
 }
 #about_featured {
-  @include featured_base("chapterpicture", true)
+  @include featured-base("chapterpicture", true)
 }
 
-/* Section shit */
+// Section shit
 article {
   .section-header {
     font-size: 20px;
@@ -162,8 +161,10 @@ article {
     text-align: justify;
     text-justify: inter-word;
     .heading {
-      font-weight: bold;
-      font-size:16px;
+      font: {
+        weight: bold;
+        size:16px;
+      }
       text-transform: uppercase;
       margin-bottom: 2px;
     }
@@ -188,12 +189,12 @@ article {
     }
   }
 }
-/* monospace class */
+// monospace class
 .monospace {
   font-family: monospace;
   margin: 5px;
 }
-/* History Page */
+// History Page
 figure.historyimagecontainer {
   text-align: center;
   figcaption {
@@ -201,8 +202,8 @@ figure.historyimagecontainer {
     font-size: 12px;
   }
 }
-/* Footer */
 
+// Footer
 footer {
   font-size: 14px;
   margin-top: 30px;
@@ -222,7 +223,7 @@ footer {
   }
 }
 
-/* Table code */
+// Table code
 // Stolen from Bootstrap
 table {
   max-width: 100%;
@@ -238,7 +239,7 @@ table {
     line-height: 20px;
     text-align: left;
     vertical-align: top;
-    border-top: 1px solid #dddddd;
+    border-top: 1px solid #ddd;
   }
   th {
     font-weight: bold;
@@ -262,10 +263,10 @@ table {
     }
   }
   tbody + tbody {
-    border-top: 2px solid #dddddd;
+    border-top: 2px solid #ddd;
   }
   .table {
-    background-color: #ffffff;
+    background-color: #fff;
   }
 }
 
@@ -297,7 +298,7 @@ table {
   }
 }
 
-/* Progress bar */
+// Progress bar
 // Also stolen from bootstrap
 @-webkit-keyframes progress-bar-stripes {
   from {
@@ -370,7 +371,7 @@ table {
   .bar {
     width: 0%;
     height: 100%;
-    color: #ffffff;
+    color: #fff;
     float: left;
     font-size: 12px;
     text-align: center;
@@ -502,7 +503,7 @@ table {
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
 
-/* Progress Bar customz */
+// Progress Bar customz
 td.progbar {
   width: 100px;
   .progress {
@@ -517,7 +518,7 @@ td.progbar {
   }
 }
 
-/* Modal */
+// Modal
 .modal-backdrop {
   background-color: white;
   opacity: 0.8;
@@ -584,7 +585,7 @@ td.progbar {
   }
 }
 
-/* New Order Page */
+// New Order Page
 @mixin smalluppercase {
   text-transform: uppercase;
   font-size: 11px;
@@ -631,8 +632,8 @@ table.neworder {
       border-radius: 5px;
       border: 1px solid #ccc;
       width: 150px;
-      background-color: #ffffff;
-      border: 1px solid #cccccc;
+      background-color: #fff;
+      border: 1px solid #ccc;
       -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
       -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
       box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -644,7 +645,7 @@ table.neworder {
         border-color: rgba(82, 168, 236, 0.8);
         outline: 0;
         // outline: thin dotted \9;
-        /* IE6-9 */
+        // IE6-9
 
         -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
         -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
@@ -684,20 +685,20 @@ table.neworder {
 .order-info {
   margin-top: 20px;
   padding: 20px 0;
-  border-top: 1px solid #dddddd;
-  border-bottom: 1px solid #dddddd;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
   .address {
     color: #666;
     margin-bottom: 10px;
   }
 }
 
-input#price {
+#price {
   padding: 6px;
   border-radius: 5px;
   border: 1px solid #ccc;
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
+  background-color: #fff;
+  border: 1px solid #ccc;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -709,7 +710,7 @@ input#price {
     border-color: rgba(82, 168, 236, 0.8);
     outline: 0;
     // outline: thin dotted \9;
-    /* IE6-9 */
+    // IE6-9 
 
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
     -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
