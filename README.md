@@ -3,44 +3,46 @@
 Website for Pi Kappa Phi Upsilon Chapter (Illinois)
 
 ## Technologies
-    * [Sinatra (Ruby)](http://sinatrarb.com "Sinatra")
-    * [Haml](http://haml.info/ "Haml")
-    * [SCSS](http://sass-lang.com "SCSS")
-    * [MongoDB](http://mongodb.org "MongoDB")
-    * [Stripe](http://stripe.com "Stripe")
-    * [Mandrill](http://mandrill.com "Mandrill")
-    * [Heroku](http://heroku.com "Heroku")
+  * [Sinatra (Ruby)](http://sinatrarb.com "Sinatra")
+  * [Haml](http://haml.info/ "Haml")
+  * [SCSS](http://sass-lang.com "SCSS")
+  * [MongoDB](http://mongodb.org "MongoDB")
+  * [Stripe](http://stripe.com "Stripe")
+  * [Mandrill](http://mandrill.com "Mandrill")
+  * [Heroku](http://heroku.com "Heroku")
+  * [New Relic](http://newrelic.com "New Relic")
 
 ## Heroku Addons
-    * [MongoHQ](https://addons.heroku.com/mongohq)
-    * [Mandrill](https://addons.heroku.com/mandrill)
+  * [MongoHQ](https://addons.heroku.com/mongohq "MongoHQ Heroku Addon")
+  * [Mandrill](https://addons.heroku.com/mandrill "Mandrill Heroku Addon")
+  * [New Relic](https://addons.heroku.com/newrelic "New Relic Heroku Addon")
 
 ## Some things
 
-    head.haml
-        * Doctype, HEAD, header, 'featured' image
-
-    foot.haml
-        * footer... copyright & social networking
+  * `head.haml`
+      * Doctype, HEAD, header, 'featured' image
       
-    page.haml
-        * Sets up the page content (i.e. heading, <section>)
-        * grabs the relevant content from pagename.haml
+  * `foot.haml`
+    * footer... copyright & social networking
+    
+  * `page.haml` 
+    * Sets up the page content (i.e. heading, <section>)
+    * grabs the relevant content from pagename.haml
 
-    other haml files
-        * info to be displayed on pages
-        * routing is /pages/pagename, which will grab info from pagename.haml (/pagename also works)
-        * only files that need to be edited to add content
+  * `other .haml files`
+    * info to be displayed on pages
+    * routing is /pages/pagename, which will grab info from pagename.haml (/pagename also works)
+    * only files that need to be edited to add content
 
-    projects.json
-        * Used to store the projects we're currently collecting donations for.
-        * Should be stored in a database and not a JSON file
-        * This is temporary...
+  * `projects.json`
+    * Used to store the projects we're currently collecting donations for.
+    * Should be stored in a database and not a JSON file
+    * **This is temporary.**
 
-    MongoDB
-        * Used MongoDB to store user information
-        * This was done simply because it was the easiest and cheapest
-        * Feel free to use whatever...
+  * `MongoDB`
+    * Used MongoDB to store user information
+    * This was done simply because it was the easiest and cheapest
+    * Feel free to use whatever...
 
 ## Extending it for your (chapter's) use
 
@@ -54,28 +56,45 @@ If you find a bug, please report it. Thanks!
 
 Wanna help? Awesome. Fork the repo and make a pull request.
 
-## Running on Dev Server
+## Running Locally
 
 Make a file called `config.rb` and with the contents:
     
-    ```ruby
-    ENV['STRIPE_PUBLISHABLE'] = 'pk_live_...'
-    ENV['STRIPE_SECRET'] = 'sk_live_...'
-    ENV['TEST_STRIPE_PUBLISHABLE'] = 'pk_test_...'
-    ENV['TEST_STRIPE_SECRET'] = 'sk_test_...'
-    ENV['MONGOHQ_URL'] = "mongodb://user:pass@mongohq..."
-    ENV['MANDRILL_APIKEY'] = 'abc123...'
-    ```
+  ```ruby
+  ENV['STRIPE_PUBLISHABLE'] = 'pk_live_...'
+  ENV['STRIPE_SECRET'] = 'sk_live_...'
+  ENV['TEST_STRIPE_PUBLISHABLE'] = 'pk_test_...'
+  ENV['TEST_STRIPE_SECRET'] = 'sk_test_...'
+  ENV['MONGOHQ_URL'] = "mongodb://user:pass@mongohq..."
+  ENV['MANDRILL_APIKEY'] = 'abc123...'
+  ```
 
-### Instructions:
-    1. Fork the repo
-    2. Modify
-    3. git push heroku master
+Then to run, open up terminal, `cd` into your directory and:
+
+  ```bash
+  $ ruby app.rb
+  ```
+
+The app will then be running on `http://localhost:1183`. Navigate there and bask in the beauty.
+
+
+## Running on Heroku
+[Heroku](http://heroku.com "Heroku") is an awesome PaaS.
+
+### Setting up Heroku
+  1. Set up a new heroku app. Refer to their documentation on how to do that.
+  2. Add the addons listed above.
+  3. Add your Stripe keys using `heroku config:add keyname=value`
+
+### Publishing
+  1. Fork the repo
+  2. Modify
+  3. git push heroku master
 
 ## Licensing
 
   Individual software packages will have their own licenses, you should check those as well, if you're interested.
-  
+
     The MIT License (MIT)
 
     Copyright (c) 2013 Brett Jurgens
