@@ -30,9 +30,10 @@ Website for Pi Kappa Phi Upsilon Chapter (Illinois). Built from scratch using th
     * grabs the relevant content from pagename.haml
 
   * `other .haml files`
-    * info to be displayed on pages
+    * fragments to be displayed on pages
     * routing is /pages/pagename, which will grab info from pagename.haml (/pagename also works)
     * only files that need to be edited to add content
+    * *might be changed to markdown*
 
   * `projects.json`
     * Used to store the projects we're currently collecting donations for.
@@ -40,7 +41,7 @@ Website for Pi Kappa Phi Upsilon Chapter (Illinois). Built from scratch using th
     * **This is temporary.**
 
   * `MongoDB`
-    * Used MongoDB to store user information
+    * Used to store user information
     * This was done simply because it was the easiest and cheapest
     * Feel free to use whatever...
 
@@ -89,7 +90,7 @@ The app will then be running on `http://localhost:1183`. Navigate there and bask
 ### Publishing
   1. Fork the repo
   2. Modify
-  3. git push heroku master
+  3. `$ git push heroku master`
 
 ## Licensing
 
