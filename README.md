@@ -1,6 +1,6 @@
 #illinipikapp
 
-Website for Pi Kappa Phi Upsilon Chapter (Illinois). Built from scratch using the awesome Sinatra Ruby Framework
+Website for [Pi Kappa Phi Upsilon Chapter (Illinois)](http://illinipikapp.com). Built from scratch using the awesome Sinatra Ruby Framework.
 
 ## Technologies
   * [Sinatra (Ruby)](http://sinatrarb.com "Sinatra")
@@ -117,3 +117,8 @@ The app will then be running on `http://localhost:1183`. Navigate there and bask
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
     THE SOFTWARE.
+
+## Enjoy
+Enjoy this.
+
+Brett Jurgens Y1183
