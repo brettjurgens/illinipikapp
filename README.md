@@ -1,6 +1,6 @@
 #illinipikapp
 
-Website for Pi Kappa Phi Upsilon Chapter (Illinois)
+Website for Pi Kappa Phi Upsilon Chapter (Illinois). Built from scratch using the awesome Sinatra Ruby Framework
 
 ## Technologies
   * [Sinatra (Ruby)](http://sinatrarb.com "Sinatra")
@@ -26,7 +26,7 @@ Website for Pi Kappa Phi Upsilon Chapter (Illinois)
     * footer... copyright & social networking
     
   * `page.haml` 
-    * Sets up the page content (i.e. heading, <section>)
+    * Sets up the page content (i.e. heading, section, etc.)
     * grabs the relevant content from pagename.haml
 
   * `other .haml files`
