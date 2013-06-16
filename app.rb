@@ -172,7 +172,7 @@ get '/testmongo' do
   puts db.collection_names
 end
 
-['/:name', '/:name/', '/pages/:name', '/pages/:name/'].each do |path|
+['/:name/?', '/pages/:name/?'].each do |path|
   get path do |name|
     # set up locals here, in case we have special pages (like donate)
     locals = {:page => name}
