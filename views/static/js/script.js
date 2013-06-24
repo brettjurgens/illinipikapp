@@ -34,7 +34,7 @@ $(function(){
 function validateAmount(){
   amount = $('#price');
   $('.donate-error').remove();
-  if(amount.val().match( /^[0-9]+(\.([0-9]+))?$/) && amount.val() != 0){
+  if(amount.val().match( /^[0-9]+(\.([0-9]+))?$/) && amount.val() !== 0){
     return true;
   }else{
     $('<tr class="donate-error"><td><div class="textright">Please enter a valid donation!</div></td><td></td></tr>').appendTo('.neworder tbody');
