@@ -2,7 +2,7 @@
 require 'sinatra'
 require 'sass'
 require 'haml'
-require 'json'
+# require 'json'
 require 'stripe'
 require 'mongo'
 require 'uri'
