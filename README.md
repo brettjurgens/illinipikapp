@@ -57,6 +57,33 @@ If you find a bug, please report it. Thanks!
 
 Wanna help? Awesome. Fork the repo and make a pull request.
 
+## The Future...
+
+### Better Donations
+  * Automatically update campaigns
+  * Use a database instead of JSON
+  * Perhaps roll into standalone service?
+
+### Users
+  * Have users and run more chapter operations through this
+
+### Chapter Operations
+  * Attendance
+  * Roster
+  * Contact info
+  * Room draft
+
+### Easier Content Management
+  * Use Markdown instead of Haml for content
+  * Perhaps a WYSIWYG Editor
+  * 'Blog'-like updates? (Jekyll?)
+
+### Misc.
+  * Rails instead of Sintra?
+  * Probably some cool graphs
+
+I'm not sure where this project is going to go from here, but we'll see...
+
 ## Running Locally
 
 Make a file called `config.rb` and with the contents:
