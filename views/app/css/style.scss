@@ -137,6 +137,26 @@ header {
   }
 }
 
+// announcements!
+.announcement {
+  font-family: sans-serif;
+  font-size: 14px;
+  background-color: rgb(223, 240, 216);
+  border: 1px solid rgb(214, 233, 198);
+  padding: 10px 15px;
+  margin-bottom: 10px;
+}
+
+// event!
+.event {
+  a {
+    border-bottom: 1px solid #bbb;
+  }
+  .eventtime {
+    font-weight: bold;
+  }
+}
+
 // Featured Image(s)!
 #welcome_featured {
   @include featured-base("flags")

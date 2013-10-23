@@ -172,6 +172,15 @@ get '/testmongo' do
   puts db.collection_names
 end
 
+get '/events/:name' do |name|
+  locals = {:page=>name}
+  begin
+    haml :event, :locals => locals
+  rescue Errno::ENOENT
+    haml :error, :locals => locals
+  end
+end
+
 ['/:name/?', '/pages/:name/?'].each do |path|
   get path do |name|
     # set up locals here, in case we have special pages (like donate)
