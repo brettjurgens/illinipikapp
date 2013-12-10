@@ -77,7 +77,7 @@ function modal(obj) {
   
   // check
   $('<div class="donate-header">Via Check</div>').appendTo('.ccdonate-modal');
-  $('<h2>Make your check payable to Pi Kappa Phi with ' + id + ' as the memo and mail it to:</h2><div class="monospace">Attn: Brett Jurgens<br>Pi Kappa Phi Upsilon Chapter<br>306 E. Gregory Drive<br>Champaign, IL 61820</div>').appendTo('.ccdonate-modal');
+  $('<h2>Make your check payable to Pi Kappa Phi with ' + id + ' as the memo and mail it to:</h2><div class="monospace">Attn: Kevin Cohn<br>Pi Kappa Phi Upsilon Chapter<br>306 E. Gregory Drive<br>Champaign, IL 61820</div>').appendTo('.ccdonate-modal');
 
   $('.modal').fadeIn();
 };
