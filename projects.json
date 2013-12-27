@@ -16,9 +16,9 @@
       "name" : "Flag Pole & Flags",
       "short-description" : "Help us show our patriotism and PiKapp pride by donating to our flag fund.",
       "long-description" : "Help us show our patriotism and PiKapp pride by donating to our flag fund. With these donations, we hope to purchase a flag pole for our lawn to showcase the American and Pi Kappa Phi flags. We&apos;d love to show our pride in both America and Pi Kappa Phi and hoisting these flags in the air is a great way to show it.",
-      "total-price" : "500",
-      "current-price" : "0",
-      "percent" : "0",
+      "total-price" : "1000",
+      "current-price" : "100",
+      "percent" : "10",
       "proposal-link" : "/proposals/flagsandpole.pdf",
       "paypal" : "JB4G7EMW3432G"
     },
