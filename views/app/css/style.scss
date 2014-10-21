@@ -238,7 +238,12 @@ footer {
     float: left;
     .twitter {
       position: relative;
+      vertical-align: bottom;
+      display: inline-block;
       // top: 3px;
+    }
+    .fb_iframe_widget {
+      vertical-align: top;
     }
   }
 }

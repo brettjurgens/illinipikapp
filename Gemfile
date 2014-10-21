@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.0.0"
+ruby '2.1.3'
 
 gem 'sinatra'
 gem 'thin'
@@ -7,7 +7,7 @@ gem 'haml'
 gem 'sass'
 gem 'rdiscount'
 gem 'newrelic_rpm'
-gem 'json', "~>1.7.7"
+gem 'json'
 gem 'stripe'
 gem 'mongo'
 gem 'bson_ext'

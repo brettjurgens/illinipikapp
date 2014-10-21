@@ -54,7 +54,7 @@ PLATFORMS
 DEPENDENCIES
   bson_ext
   haml
-  json (~> 1.7.7)
+  json
   mandrill-api
   mongo
   newrelic_rpm
